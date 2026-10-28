@@ -17,7 +17,7 @@ body:after,.noise,.rain-layer{display:none!important}
 .ambient-toggle{border:0;background:rgba(255,255,255,.045);border-radius:999px;padding:10px 14px}
 .hero{min-height:680px}.hero-backdrop:before{background:linear-gradient(90deg,#020202 0%,rgba(2,2,2,.98) 23%,rgba(2,2,2,.72) 51%,rgba(2,2,2,.22) 100%),linear-gradient(0deg,#020202 0%,transparent 42%,rgba(2,2,2,.12))}
 .hero-backdrop:after{background:radial-gradient(ellipse at 72% 48%,rgba(255,48,17,.16),transparent 46%);transform:none}
-.hero-art{overflow:hidden;border-radius:30px;min-height:500px;background-image:linear-gradient(90deg,rgba(2,2,2,.1),rgba(2,2,2,.03)),linear-gradient(0deg,rgba(2,2,2,.65),transparent 40%),url('https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=1400&q=85');background-size:cover;background-position:center 48%;box-shadow:inset 0 0 100px 25px rgba(0,0,0,.68),0 40px 100px rgba(0,0,0,.25)}
+.hero-art{overflow:hidden;border-radius:30px;min-height:500px;background-image:linear-gradient(90deg,rgba(2,2,2,.1),rgba(2,2,2,.03)),linear-gradient(0deg,rgba(2,2,2,.65),transparent 40%),url('city-night-1.jpg');background-size:cover;background-position:center 48%;box-shadow:inset 0 0 100px 25px rgba(0,0,0,.68),0 40px 100px rgba(0,0,0,.25)}
 .cinema-art:before,.cinema-art:after,.cinema-frame,.hero-moon,.hero-architecture,.cinema-person,.hero-title-mark,.hero-crosshair{display:none!important}
 .hero-art-caption{left:28px;right:28px;bottom:25px;color:rgba(255,255,255,.7);text-shadow:0 2px 15px #000}
 .hero h1{letter-spacing:-.07em}.hero h1 span{color:#d2cbc7}.hero h1 em{color:#ff4a22;text-shadow:0 0 45px rgba(255,54,20,.28)}
