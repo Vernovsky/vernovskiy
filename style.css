@@ -24,7 +24,7 @@ body:after,.noise,.rain-layer{display:none!important}
 .button{border-radius:999px}.button-light{background:#f1eeeb}.text-link{border-radius:999px}
 .hero-bottom{border-top-color:rgba(255,255,255,.07)}
 .cinema-note{padding-top:28px}.cinema-note-card{border:0;border-radius:28px;overflow:hidden;background:linear-gradient(105deg,#090706,#080605 58%,#110604);box-shadow:0 25px 90px rgba(0,0,0,.2)}
-.note-image{min-height:330px;background-image:linear-gradient(0deg,rgba(2,2,2,.55),rgba(2,2,2,.04)),linear-gradient(90deg,rgba(2,2,2,.05),rgba(2,2,2,.1)),url('https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1200&q=85');background-size:cover;background-position:center 52%}
+.note-image{min-height:330px;background-image:linear-gradient(0deg,rgba(2,2,2,.55),rgba(2,2,2,.04)),linear-gradient(90deg,rgba(2,2,2,.05),rgba(2,2,2,.1)),url('city-night-2.jpg');background-size:cover;background-position:center 52%}
 .note-image:before{background:linear-gradient(90deg,transparent 50%,rgba(8,6,5,.35) 100%)}
 .note-sun,.note-silhouette{display:none!important}.note-image-label{color:#e0d6d2;text-shadow:0 2px 12px #000}
 .note-copy{padding:42px 48px}.note-copy h2{letter-spacing:-.06em}.note-copy h2 span{color:#ff4a22}.note-bottom{border-top-color:rgba(255,255,255,.07)}
