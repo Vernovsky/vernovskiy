@@ -1,0 +1,40 @@
+/* Общая основа для страниц mood/ и news/: шапка, подвал, кнопки, типографика.
+   Цвета и шрифты те же, что на главной странице. */
+:root{--bg:#090909;--panel:#111;--panel2:#161616;--line:rgba(255,255,255,.12);--line2:rgba(255,255,255,.3);--muted:#9a9a9a;--text:#f2f0ed;--accent:#ff5a28;--ok:#6de0a1;--bad:#ff656d;--display:'Space Grotesk',system-ui,sans-serif;--body:'Manrope',system-ui,sans-serif;--mono:'DM Mono',ui-monospace,monospace}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:400 15px/1.6 var(--body);min-height:100vh;display:flex;flex-direction:column}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--text);outline-offset:3px}
+
+.sp-top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px max(16px,calc((100vw - 960px)/2));border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(9,9,9,.92);backdrop-filter:blur(8px);z-index:5}
+.sp-brand{font:700 15px/1 var(--display);letter-spacing:.14em;white-space:nowrap}
+.sp-brand span{color:var(--accent)}
+.sp-brand em{font:500 11px/1 var(--mono);font-style:normal;letter-spacing:.2em;color:var(--muted);margin-left:8px;border:1px solid var(--line);padding:4px 7px;border-radius:99px}
+.sp-back{font:500 12px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding:10px 0;white-space:nowrap}
+.sp-back:hover{color:var(--text)}
+
+.sp-main{width:100%;max-width:960px;margin:0 auto;padding:44px 16px 64px;flex:1}
+.sp-foot{display:flex;justify-content:space-between;gap:12px 24px;flex-wrap:wrap;padding:20px max(16px,calc((100vw - 960px)/2));border-top:1px solid var(--line);font:400 11px/1.5 var(--mono);letter-spacing:.08em;color:var(--muted);text-transform:uppercase}
+.sp-foot nav{display:flex;gap:18px;flex-wrap:wrap}
+.sp-foot a:hover{color:var(--text)}
+
+.sp-eyebrow{font:500 11px/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.sp-eyebrow i{width:6px;height:6px;border-radius:50%;background:var(--accent);display:inline-block}
+.sp-h1{font:700 clamp(34px,7.6vw,64px)/1.02 var(--display);letter-spacing:-.025em;margin:18px 0 12px;text-transform:uppercase}
+.sp-lead{color:var(--muted);max-width:56ch;margin:0 0 30px}
+.sp-h2{font:600 clamp(22px,4.6vw,30px)/1.2 var(--display);letter-spacing:-.01em;margin:0 0 18px}
+
+.sp-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 24px;border-radius:99px;border:1px solid var(--text);background:var(--text);color:#090909;font:600 14px/1 var(--body);transition:transform .2s,border-color .2s,background .2s,color .2s}
+.sp-btn:hover{transform:translateY(-1px)}
+.sp-btn.ghost{background:transparent;color:var(--text);border-color:var(--line2)}
+.sp-btn.ghost:hover{border-color:var(--text)}
+.sp-actions{display:flex;gap:12px;flex-wrap:wrap}
+
+.sp-note{border:1px solid var(--line);border-radius:12px;padding:12px 14px;color:var(--muted);font-size:13px;margin:0}
+.sp-note b{color:var(--text);font-weight:600}
+
+@keyframes spin{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media (max-width:520px){.sp-brand em{display:none}.sp-main{padding-top:30px}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
