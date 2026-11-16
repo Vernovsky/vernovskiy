@@ -1,0 +1,135 @@
+/* VERNOVSKIY — «Ночной сад»: фиолетовая палитра и стекло (glassmorphism).
+   Подключается ПОСЛЕДНИМ на каждой странице (после style.css / subpage.css / quiz.css / mood.css / news.css и atmosphere.css),
+   поэтому перекрывает прежние тёмные и тёплые стили, не трогая логику и вёрстку.
+   Размытие фона (backdrop-filter) используется только на крупных панелях; мелкие карточки каталога фильмов — лёгкие, без размытия. */
+
+:root{
+  --bg:#0d0627;
+  --panel:rgba(38,19,84,.44);
+  --panel2:rgba(66,36,132,.5);
+  --line:rgba(205,184,255,.16);
+  --line2:rgba(205,184,255,.36);
+  --muted:#b4a7da;
+  --text:#f5f0ff;
+  --accent:#b79bff;
+  --orange:#b394ff;
+  --orange2:#d2c0ff;
+  --purple:#a67cff;
+  --glass:linear-gradient(145deg,rgba(255,255,255,.1),rgba(160,120,255,.07) 46%,rgba(84,44,176,.12));
+  --glass-edge:rgba(216,198,255,.22);
+  --glass-shadow:inset 0 1px 0 rgba(255,255,255,.22),inset 0 -1px 0 rgba(120,80,220,.18),0 18px 54px rgba(6,0,28,.42);
+  --glass-blur:blur(16px) saturate(140%);
+  --glow:rgba(150,100,255,.4);
+}
+::selection{background:rgba(166,124,255,.45);color:#fff}
+:focus-visible{outline:2px solid #cdb8ff!important;outline-offset:3px}
+
+/* ---------- фон: убираем прежние чёрные слои, небо рисует atmosphere.js ---------- */
+html,body{background:transparent}
+body:before,body:after,.cinema-glow,.noise,.rain-layer{display:none!important}
+main{border-right-color:transparent;border-bottom-color:transparent}
+.hero-backdrop:before{background:none}
+.hero-backdrop:after{background:radial-gradient(ellipse at 72% 48%,rgba(150,100,255,.2),transparent 50%)}
+.hero-moon,.hero-scanline{display:none!important}      /* никаких планет и лун */
+
+/* ---------- шапка и подвал ---------- */
+.topbar,.sp-top,.qz-top{
+  background:rgba(22,10,56,.5);border-bottom:1px solid var(--glass-edge);
+  -webkit-backdrop-filter:blur(20px) saturate(150%);backdrop-filter:blur(20px) saturate(150%);
+  box-shadow:0 1px 0 rgba(255,255,255,.06) inset,0 10px 40px rgba(6,0,28,.3)}
+.footer,.sp-foot,.qz-foot{background:rgba(14,6,40,.5);border-top:1px solid var(--glass-edge);color:#a898d2;
+  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+.wordmark-dot,.sp-brand span,.qz-brand span{color:#c3a6ff;text-shadow:0 0 14px rgba(180,140,255,.8)}
+.topbar nav a,.sp-back,.qz-back{transition:color .25s ease,text-shadow .25s ease}
+.topbar nav a:hover{color:#fff;text-shadow:0 0 16px rgba(190,150,255,.9)}
+.ambient-toggle{background:rgba(255,255,255,.08);box-shadow:inset 0 0 0 1px var(--glass-edge);
+  transition:background .3s ease,box-shadow .3s ease,transform .2s ease}
+.ambient-toggle:hover{background:rgba(180,140,255,.22);box-shadow:inset 0 0 0 1px rgba(216,198,255,.5),0 0 22px rgba(150,100,255,.35)}
+.ambient-toggle:active{transform:scale(.96)}
+.ambient-toggle[aria-pressed="true"]{background:rgba(166,124,255,.28);box-shadow:inset 0 0 0 1px rgba(216,198,255,.55),0 0 24px rgba(150,100,255,.4)}
+@media(max-width:1340px){
+  .topbar nav{background:rgba(24,11,60,.78);-webkit-backdrop-filter:blur(22px);backdrop-filter:blur(22px);border-bottom:1px solid var(--glass-edge)}
+}
+@media(max-width:720px){
+  .world-clock{background:rgba(26,12,66,.7);box-shadow:inset 0 0 0 1px var(--glass-edge);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+}
+
+/* ---------- заголовки и акценты ---------- */
+.hero h1{color:#f6f1ff}
+.hero h1 span{color:#d9ccf7}
+.hero h1 em,.section-heading h2 span,.note-copy h2 span{color:#b99dff;text-shadow:0 0 42px rgba(160,110,255,.5)}
+.hero-lead,.section-heading>p,.note-copy p,.about-copy p{color:#c9bde8}
+.ticker-label{background:transparent}
+.ticker-section{border-top-color:var(--glass-edge);border-bottom-color:var(--glass-edge)}
+.ticker-track{color:#c0b2e6;-webkit-mask-image:linear-gradient(90deg,transparent,#000 36px,#000 calc(100% - 36px),transparent);mask-image:linear-gradient(90deg,transparent,#000 36px,#000 calc(100% - 36px),transparent)}
+.about-section{border-top-color:var(--glass-edge);border-bottom-color:var(--glass-edge)}
+.hero-bottom{border-top-color:var(--glass-edge)}
+
+/* ---------- стеклянные панели ---------- */
+.project-card,.film-glass-panel,.calendar-layout,.cinema-note-card,
+.mood-greet,.mood-view,.mood-card,.nw-card,.nw-tabs,.qz-fb,.qz-opt,.qz-note,.sp-note,.qz-facts,.qz-next-day{
+  background:var(--glass);border:1px solid var(--glass-edge);box-shadow:var(--glass-shadow);
+  -webkit-backdrop-filter:var(--glass-blur);backdrop-filter:var(--glass-blur)}
+.project-card{transition:transform .4s cubic-bezier(.2,.7,.2,1),box-shadow .4s ease,border-color .4s ease,background .4s ease}
+.project-card:hover{transform:translateY(-7px);border-color:rgba(226,210,255,.5);
+  background:linear-gradient(145deg,rgba(255,255,255,.15),rgba(170,130,255,.12) 46%,rgba(96,52,196,.18));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 26px 70px rgba(10,0,44,.55),0 0 44px rgba(150,100,255,.3)}
+.project-card:active{transform:translateY(-2px) scale(.99)}
+.card-feature{background:linear-gradient(145deg,rgba(255,255,255,.14),rgba(170,130,255,.14) 46%,rgba(100,56,200,.22))}
+.card-orbit{display:none}                               /* прежние «орбиты» похожи на планеты — убираем */
+.cinema-note-card{overflow:hidden}
+.note-bottom{border-top-color:var(--glass-edge)}
+.film-glass-panel{overflow:hidden}
+.calendar-main{border-right-color:var(--glass-edge)}
+.day-cell{background:rgba(255,255,255,.05);border-radius:9px;transition:background .25s ease,transform .25s ease}
+.day-cell:hover{background:rgba(180,140,255,.2);transform:translateY(-1px)}
+.day-cell.today{background:linear-gradient(135deg,#c3a6ff,#8f64f0);color:#170a3c;box-shadow:0 0 24px rgba(160,110,255,.55)}
+.about-image-frame{border:1px solid var(--glass-edge);box-shadow:0 30px 80px rgba(6,0,28,.5),0 0 60px rgba(140,90,255,.2)}
+.hero-art{box-shadow:0 0 0 1px var(--glass-edge),0 30px 90px rgba(6,0,28,.5),0 0 90px rgba(140,90,255,.22);
+  background-blend-mode:normal}
+
+/* ---------- каталог фильмов ---------- */
+.film-card{background:rgba(255,255,255,.055);border:1px solid rgba(216,198,255,.12);
+  transition:transform .3s cubic-bezier(.2,.7,.2,1),background .3s ease,border-color .3s ease,box-shadow .3s ease}
+.film-card:hover{transform:translateY(-4px);background:rgba(170,130,255,.16);border-color:rgba(216,198,255,.4);box-shadow:0 14px 40px rgba(8,0,36,.5),0 0 26px rgba(150,100,255,.25)}
+.film-title{color:#efe8ff}
+.searchbox,.film-toolbar select{background:rgba(14,6,42,.55);border:0;box-shadow:inset 0 0 0 1px var(--glass-edge);color:var(--text);
+  transition:box-shadow .3s ease,background .3s ease}
+.searchbox:focus-within,.film-toolbar select:focus{box-shadow:inset 0 0 0 1px #c3a6ff,0 0 24px rgba(150,100,255,.35)}
+.film-toolbar select option{background:#1a0b40;color:#f5f0ff}
+.film-footer{border-top-color:var(--glass-edge)}
+
+/* ---------- кнопки ---------- */
+.button,.sp-btn,.qz-btn,.text-link,.nw-tab,.nw-chip,.mood-card,.qz-opt,#to-top{transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .3s ease,background .3s ease,border-color .3s ease,color .3s ease}
+.button-light,.sp-btn,.qz-btn{background:linear-gradient(135deg,#e2d6ff,#b595ff 60%,#9a72f5);color:#1a0b44;border-color:transparent;
+  box-shadow:0 8px 30px rgba(130,80,240,.45),inset 0 1px 0 rgba(255,255,255,.6)}
+.button-light:hover,.sp-btn:hover,.qz-btn:hover{transform:translateY(-3px);box-shadow:0 14px 42px rgba(150,100,255,.65),inset 0 1px 0 rgba(255,255,255,.7)}
+.button-light:active,.sp-btn:active,.qz-btn:active{transform:translateY(0) scale(.97);box-shadow:0 4px 16px rgba(130,80,240,.5)}
+.button-outline,.sp-btn.ghost,.sp-btn.outline,.qz-btn.ghost{background:rgba(255,255,255,.07);border:1px solid var(--glass-edge);color:var(--text);
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.button-outline:hover{background:rgba(180,140,255,.22);transform:translateY(-2px);box-shadow:0 0 28px rgba(150,100,255,.4)}
+.text-link:hover{color:#fff;text-shadow:0 0 16px rgba(190,150,255,.8)}
+.nw-tab[aria-selected=true]{background:linear-gradient(135deg,#e2d6ff,#b595ff);color:#1a0b44;box-shadow:0 4px 22px rgba(150,100,255,.5)}
+.nw-chip[aria-pressed=true]{border-color:#c3a6ff;background:rgba(166,124,255,.22)}
+.mood-card:hover,.qz-opt:hover:not(:disabled){transform:translateY(-3px);background:linear-gradient(145deg,rgba(255,255,255,.16),rgba(170,130,255,.16));border-color:rgba(226,210,255,.5);box-shadow:0 18px 50px rgba(8,0,36,.5),0 0 30px rgba(150,100,255,.3)}
+.mood-card:active,.qz-opt:active:not(:disabled){transform:scale(.985)}
+#to-top{background:linear-gradient(135deg,#d6c4ff,#9a72f5);color:#170a3c;box-shadow:0 8px 30px rgba(130,80,240,.5)}
+#to-top:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(150,100,255,.7)}
+
+
+/* ---------- уменьшенная анимация ---------- */
+@media(prefers-reduced-motion:reduce){
+  .project-card:hover,.film-card:hover,.button-light:hover,.sp-btn:hover,.mood-card:hover,.qz-opt:hover:not(:disabled),.day-cell:hover,#to-top:hover{transform:none}
+  .project-card,.film-card,.button,.sp-btn,.mood-card,.qz-opt,.day-cell,.ambient-toggle{transition-duration:.01ms!important}
+}
+
+/* ---------- читаемость: ветки не мешают тексту, подписи — лавандовые ---------- */
+.vsa-branch{opacity:.7;width:clamp(170px,26vw,400px)}
+.vsa-branch:before{opacity:.5}
+@media(max-width:720px){.vsa-branch{opacity:.55;width:clamp(120px,36vw,200px)}}
+.eyebrow,.card-kicker,.card-number,.sp-eyebrow,.qz-eyebrow,.calendar-label{color:#b8a9e0}
+.project-content p,.hero-meta,.hero-bottom,.hero-art-caption,.film-year,.film-summary,.film-footer,.calendar-note,.calendar-legend,.about-facts span,.image-tag{color:#b3a5da}
+.film-summary b,.hero-bottom span{color:inherit}
+.footer span{color:#a898d2}
+
+
